@@ -31,7 +31,7 @@ public class SettingCDB {
 	private JTextField txtHost;
 	private JTextField txtPort;
 	private JTextField txtUser;
-	private JTextField txtPassword;
+	private JPasswordField txtPassword;
 	private JTextField txtDatabase;
 	
 	private JButton btnSave,btnTest;
