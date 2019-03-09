@@ -272,7 +272,6 @@ public class SettingCDB {
 		frame.getContentPane().add(btnTest);
 		
 		txtUser.setText(DataMysqlConnection.getUser());
-		txtPassword.setText(DataMysqlConnection.getPassword());
 		txtDatabase.setText(DataMysqlConnection.getDataBase());
 	}
 }
