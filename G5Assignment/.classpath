@@ -13,5 +13,12 @@
 	<classpathentry kind="lib" path="D:/JavaSemester2/library to connect DB/mysql-connector-java-5.1.8-bin.jar"/>
 	<classpathentry kind="lib" path="D:/JavaSemester2/library to connect DB/mysql-connector-java-5.1.14.jar"/>
 	<classpathentry kind="lib" path="D:/JavaSemester2/library to connect DB/ucanaccess-2.0.9.4.jar"/>
+	<classpathentry kind="lib" path="D:/Stock-Management-System/G5Assignment/LB helper/commons-lang-2.6.jar"/>
+	<classpathentry kind="lib" path="D:/Stock-Management-System/G5Assignment/LB helper/commons-logging-1.1.1.jar"/>
+	<classpathentry kind="lib" path="D:/Stock-Management-System/G5Assignment/LB helper/hsqldb.jar"/>
+	<classpathentry kind="lib" path="D:/Stock-Management-System/G5Assignment/LB helper/jackcess-2.0.8.jar"/>
+	<classpathentry kind="lib" path="D:/Stock-Management-System/G5Assignment/LB helper/mysql-connector-java-5.1.8-bin.jar"/>
+	<classpathentry kind="lib" path="D:/Stock-Management-System/G5Assignment/LB helper/mysql-connector-java-5.1.14.jar"/>
+	<classpathentry kind="lib" path="D:/Stock-Management-System/G5Assignment/LB helper/ucanaccess-2.0.9.4.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
