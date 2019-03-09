@@ -31,7 +31,7 @@ public class SettingCDB {
 	private JTextField txtHost;
 	private JTextField txtPort;
 	private JTextField txtUser;
-	private JPasswordField txtPassword;
+	private JTextField txtPassword;
 	private JTextField txtDatabase;
 	
 	private JButton btnSave,btnTest;
@@ -64,8 +64,8 @@ public class SettingCDB {
 	private void btnSave_Clicked(ActionEvent eve)
 	{
 		String url = "jdbc:mysql://"+txtHost.getText()+":"+txtPort.getText()+"/"+txtDatabase.getText();
-		
-		writeBinaryFile(url,txtUser.getText(),txtPassword.getText());
+
+		writeBinaryFile(url,txtUser.getText(),txtPassword.getText(),txtDatabase.getText());
 		
 		readBinaryFile();
 	}
@@ -91,7 +91,7 @@ public class SettingCDB {
 		}
 	}
 	
-	private void writeBinaryFile(String url,String user,String password)
+	private void writeBinaryFile(String url,String user,String password,String dataBase)
 	{
 
 		if(file.exists())
@@ -106,6 +106,8 @@ public class SettingCDB {
 				objectOutputStream.writeUTF(user);
 	
 				objectOutputStream.writeUTF(password);
+				
+				objectOutputStream.writeUTF(dataBase);
 				objectOutputStream.close();
 				
 			} catch (FileNotFoundException e) {
@@ -127,6 +129,8 @@ public class SettingCDB {
 				objectOutputStream.writeUTF(user);
 				objectOutputStream.flush();
 				objectOutputStream.writeUTF(password);
+				objectOutputStream.flush();
+				objectOutputStream.writeUTF(dataBase);
 				objectOutputStream.close();
 				
 				
@@ -152,6 +156,9 @@ public class SettingCDB {
 			
 			String s2 = inputStream.readUTF();
 			DataMysqlConnection.setPassword(s2);
+			
+			String s3 = inputStream.readUTF();
+			DataMysqlConnection.setDataBase(s3);
 			
 			inputStream.close();
 			
@@ -266,5 +273,6 @@ public class SettingCDB {
 		
 		txtUser.setText(DataMysqlConnection.getUser());
 		txtPassword.setText(DataMysqlConnection.getPassword());
+		txtDatabase.setText(DataMysqlConnection.getDataBase());
 	}
 }

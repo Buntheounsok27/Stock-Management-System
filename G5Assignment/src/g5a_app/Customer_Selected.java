@@ -40,8 +40,6 @@ public class Customer_Selected extends JFrame {
 	
 	private void storeToList()
 	{
-		Object[] row0 = {"To Go"," "," "};
-		defaultTableModel.addRow(row0);
 		for(Customer_Accessable shOnList : Customer_Accessable.customer_Accessables_Arr)
 		{
 			Object[] rowN = {shOnList.getName(),shOnList.getPhone(),shOnList.getMemberType()};

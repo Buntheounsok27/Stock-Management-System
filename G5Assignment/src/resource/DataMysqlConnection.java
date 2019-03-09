@@ -2,7 +2,7 @@ package resource;
 
 public class DataMysqlConnection {
 	
-	private static String url,user,password;
+	private static String url,user,password,dataBase;
 
 	public static String getUrl() {
 		return url;
@@ -26,6 +26,14 @@ public class DataMysqlConnection {
 
 	public static void setPassword(String password) {
 		DataMysqlConnection.password = password;
+	}
+
+	public static String getDataBase() {
+		return dataBase;
+	}
+
+	public static void setDataBase(String dataBase) {
+		DataMysqlConnection.dataBase = dataBase;
 	}
 	
 	

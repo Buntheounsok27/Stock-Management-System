@@ -189,7 +189,7 @@ public class Main_Frame extends JFrame{
 	{
 		UserPerforment.setLogoutTimeS(ReferenceMethod.getTimeShow());
 		UserPerforment.setLogoutDateS(ReferenceMethod.getDateShow());
-		ReferenceMethod.storeUserReportToDatabase();
+		//ReferenceMethod.storeUserReportToDatabase();
 		super.dispose();
 	}
 	
