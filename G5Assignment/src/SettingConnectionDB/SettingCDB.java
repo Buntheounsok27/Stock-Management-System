@@ -274,5 +274,7 @@ public class SettingCDB {
 		txtUser.setText(DataMysqlConnection.getUser());
 		txtPassword.setText(DataMysqlConnection.getPassword());
 		txtDatabase.setText(DataMysqlConnection.getDataBase());
+		System.out.println(""+DataMysqlConnection.getDataBase());
+		System.out.println(""+DataMysqlConnection.getPassword());
 	}
 }
