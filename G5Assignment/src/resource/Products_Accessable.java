@@ -1,8 +1,8 @@
 package resource;
 
 public class Products_Accessable {
-	
-	private String pid,pname,pprice,pcate,pretailgood,crate,pnamebyCate;
+
+	private String pid, pname, pprice, pcate, pretailgood, crate, pnamebyCate;
 
 	public String getPnamebyCate() {
 		return pnamebyCate;
@@ -59,7 +59,5 @@ public class Products_Accessable {
 	public void setCrate(String crate) {
 		this.crate = crate;
 	}
-	
-	
 
 }

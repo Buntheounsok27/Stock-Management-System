@@ -1,10 +1,52 @@
 package resource;
 
 public class Sale {
+
+	private String id, sale_date, emID, cusID,totalAmount,cashIN;
+
+	private static String idS, sale_dateS, emIDS, cusIDS,IDN,totalAmountS,cashINS;
+
 	
-	private String id,sale_date,emID,cusID;
 	
-	private static String idS,sale_dateS,emIDS,cusIDS;
+	public String getTotalAmount() {
+		return totalAmount;
+	}
+
+	public void setTotalAmount(String totalAmount) {
+		this.totalAmount = totalAmount;
+	}
+
+	public String getCashIN() {
+		return cashIN;
+	}
+
+	public void setCashIN(String cashIN) {
+		this.cashIN = cashIN;
+	}
+
+	public static String getIDN() {
+		return IDN;
+	}
+
+	public static void setIDN(String iDN) {
+		IDN = iDN;
+	}
+
+	public static String getTotalAmountS() {
+		return totalAmountS;
+	}
+
+	public static void setTotalAmountS(String totalAmountS) {
+		Sale.totalAmountS = totalAmountS;
+	}
+
+	public static String getCashINS() {
+		return cashINS;
+	}
+
+	public static void setCashINS(String cashINS) {
+		Sale.cashINS = cashINS;
+	}
 
 	public String getId() {
 		return id;
@@ -69,7 +111,5 @@ public class Sale {
 	public static void setCusIDS(String cusIDS) {
 		Sale.cusIDS = cusIDS;
 	}
-	
-	
 
 }

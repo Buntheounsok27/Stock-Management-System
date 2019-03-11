@@ -3,20 +3,18 @@ package resource;
 import java.util.ArrayList;
 
 public class Product_Accessable_Static {
-	
+
 	public static ArrayList<Catagory_Accessable> cateArr = new ArrayList<Catagory_Accessable>();
-	
+
 	public static ArrayList<Products_Accessable> proArr = new ArrayList<Products_Accessable>();
-	
+
 	public static ArrayList<Products_Accessable> proByCate = new ArrayList<Products_Accessable>();
-	
-	private static String cateName,proByCateS;
-	
-	private static String pidS,pnameS,ppriceS,pcateS,pretailgoodS,crateS;
-	
+
+	private static String cateName, proByCateS;
+
+	private static String pidS, pnameS, ppriceS, pcateS, pretailgoodS, crateS;
+
 	private static int pidN;
-	
-	
 
 	public static String getProByCateS() {
 		return proByCateS;
@@ -89,10 +87,5 @@ public class Product_Accessable_Static {
 	public static void setCrateS(String crateS) {
 		Product_Accessable_Static.crateS = crateS;
 	}
-	
-	
-	
-	
-	
 
 }

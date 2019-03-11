@@ -60,9 +60,9 @@ public class Account_Page extends JPanel {
 
 	private static int AccId, AccSel;
 	private static String nameUnchange;
-	
-	private int settingInt,reportInt,cashInt,customerInt,stockInt;
-	
+
+	private int settingInt, reportInt, cashInt, customerInt, stockInt;
+
 	private JPanel panel_1;
 	private JLabel lblAccountType;
 	private static JComboBox<String> cboPosition;
@@ -77,35 +77,30 @@ public class Account_Page extends JPanel {
 
 		}
 	}
-	
-	protected static void storeDataToCbo()
-	{
+
+	protected static void storeDataToCbo() {
 		cboPosition.removeAllItems();
-		for(AccountType_Accessable showOnCbo : Person_Accessable_Static.accTypeArr)
-		{
+		for (AccountType_Accessable showOnCbo : Person_Accessable_Static.accTypeArr) {
 			cboPosition.addItem(showOnCbo.getAccountType().toString());
 		}
 	}
 
 	@SuppressWarnings("deprecation")
 	private void btnAdd_Clicked(ActionEvent eve) {
-		
+
 		boolean same = true;
-		for(int i=0; i<listModel.size();i++)
-		{
-			if(listModel.getElementAt(i).toString().equalsIgnoreCase(tfName.getText()))
-			{
+		for (int i = 0; i < listModel.size(); i++) {
+			if (listModel.getElementAt(i).toString().equalsIgnoreCase(tfName.getText())) {
 				same = true;
-				JOptionPane.showMessageDialog(null, "This Catagory Name have Already...!", "Adding New Data ", JOptionPane.PLAIN_MESSAGE);
+				JOptionPane.showMessageDialog(null, "This Catagory Name have Already...!", "Adding New Data ",
+						JOptionPane.PLAIN_MESSAGE);
 				break;
-			}
-			else
-			{
-			    same = false;	continue;
+			} else {
+				same = false;
+				continue;
 			}
 		}
-		if(same == false)
-		{
+		if (same == false) {
 			if (tfRePassword.getText().equals(tfPassword.getText())) {
 
 				tfRePassword.setBorder(BorderFactory.createLineBorder(Color.GRAY));
@@ -116,44 +111,40 @@ public class Account_Page extends JPanel {
 			}
 		}
 	}
-	
-	private void addKeyEventToTextField(final JTextField txt)
-	{
+
+	private void addKeyEventToTextField(final JTextField txt) {
 		txt.addKeyListener(new KeyAdapter() {
-				public void keyReleased(KeyEvent arg0) {
-					if(txt.getText().equals(""))
-					{
-						btnAdd.setEnabled(false);
-					}else
-					{
-						btnAdd.setEnabled(true);
-					}
-					
+			@Override
+			public void keyReleased(KeyEvent arg0) {
+				if (txt.getText().equals("")) {
+					btnAdd.setEnabled(false);
+				} else {
+					btnAdd.setEnabled(true);
 				}
-				
-			});
+
+			}
+
+		});
 	}
-	
-	private void addKeyEventToTextPassword(final JPasswordField txt)
-	{
+
+	private void addKeyEventToTextPassword(final JPasswordField txt) {
 		txt.addKeyListener(new KeyAdapter() {
-				@SuppressWarnings("deprecation")
-				public void keyReleased(KeyEvent arg0) {
-					if(txt.getText().equals(""))
-					{
-						btnAdd.setEnabled(false);
-					}else
-					{
-						btnAdd.setEnabled(true);
-					}
-					
+			@Override
+			@SuppressWarnings("deprecation")
+			public void keyReleased(KeyEvent arg0) {
+				if (txt.getText().equals("")) {
+					btnAdd.setEnabled(false);
+				} else {
+					btnAdd.setEnabled(true);
 				}
-				
-			});
+
+			}
+
+		});
 	}
 
 	private void btnCreateNew_Clicked(ActionEvent eve) {
-		
+
 		txtAccID.setText("AID-00" + Person_Accessable_Static.getAccID().toString());
 		btnAdd.setEnabled(true);
 		btnUpdate.setEnabled(false);
@@ -172,16 +163,13 @@ public class Account_Page extends JPanel {
 		tfName.setEditable(true);
 		tfPassword.setEditable(true);
 		tfRePassword.setEditable(true);
-		
+
 		accountFeature();
 	}
 
 	private void btnUpdate_Clicked(ActionEvent eve) {
-		
-		 
 
-		if(tfName.hasFocus()==false || tfName.getText().equals(nameUnchange))
-		{
+		if (tfName.hasFocus() == false || tfName.getText().equals(nameUnchange)) {
 			String ID = txtAccID.getText();
 			int lId = ID.length();
 			String CatchID = txtAccID.getText().substring(5, lId);
@@ -190,23 +178,20 @@ public class Account_Page extends JPanel {
 			listModel.setElementAt(tfName.getText(), AccSel);
 			updateDataToDatabase();
 			Login_Frame.StoreUpdateDatabase();
-		}else
-		{ boolean same = true;
-			for(int i=0; i<listModel.size();i++)
-			{
-				if(listModel.getElementAt(i).toString().equalsIgnoreCase(tfName.getText()))
-				{
+		} else {
+			boolean same = true;
+			for (int i = 0; i < listModel.size(); i++) {
+				if (listModel.getElementAt(i).toString().equalsIgnoreCase(tfName.getText())) {
 					same = true;
-					JOptionPane.showMessageDialog(null, "This User Name have Already...!", "Adding New Data ", JOptionPane.PLAIN_MESSAGE);
+					JOptionPane.showMessageDialog(null, "This User Name have Already...!", "Adding New Data ",
+							JOptionPane.PLAIN_MESSAGE);
 					break;
-				}
-				else
-				{
-				    same = false;	continue;
+				} else {
+					same = false;
+					continue;
 				}
 			}
-			if(same == false)
-			{
+			if (same == false) {
 				String ID = txtAccID.getText();
 				int lId = ID.length();
 				String CatchID = txtAccID.getText().substring(5, lId);
@@ -217,7 +202,7 @@ public class Account_Page extends JPanel {
 				Login_Frame.StoreUpdateDatabase();
 			}
 		}
-		
+
 	}
 
 	private void btnRemove_Clicked(ActionEvent eve) {
@@ -238,10 +223,10 @@ public class Account_Page extends JPanel {
 	private void removeDataFromDatabase() {
 		com.mysql.jdbc.Connection con = null;
 		com.mysql.jdbc.PreparedStatement preparedStatement = null;
-		
-		try
-		{
-			con = (com.mysql.jdbc.Connection) DriverManager.getConnection(DataMysqlConnection.getUrl(),DataMysqlConnection.getUser(),DataMysqlConnection.getPassword());
+
+		try {
+			con = (com.mysql.jdbc.Connection) DriverManager.getConnection(DataMysqlConnection.getUrl(),
+					DataMysqlConnection.getUser(), DataMysqlConnection.getPassword());
 			String sqlacc = "Delete From tblaccount where ID =" + AccId;
 
 			preparedStatement = (com.mysql.jdbc.PreparedStatement) con.prepareStatement(sqlacc);
@@ -272,16 +257,16 @@ public class Account_Page extends JPanel {
 	private void insertDataToDatabase() {
 		com.mysql.jdbc.Connection con = null;
 		com.mysql.jdbc.PreparedStatement preparedStatement = null;
-		
+
 		convertBoolean();
-		
-		try
-		{
-			con = (com.mysql.jdbc.Connection) DriverManager.getConnection(DataMysqlConnection.getUrl(),DataMysqlConnection.getUser(),DataMysqlConnection.getPassword());
-			
-			String sqlacc = "Insert into tblaccount values (null,0,'" + tfName.getText() + "','"+cboPosition.getSelectedItem().toString()+"','"
-					+ tfRePassword.getText() + "'," + settingInt+ "," + reportInt
-					+ "," +cashInt + "," +stockInt+ ","+customerInt+ ")";
+
+		try {
+			con = (com.mysql.jdbc.Connection) DriverManager.getConnection(DataMysqlConnection.getUrl(),
+					DataMysqlConnection.getUser(), DataMysqlConnection.getPassword());
+
+			String sqlacc = "Insert into tblaccount values (null,0,'" + tfName.getText() + "','"
+					+ cboPosition.getSelectedItem().toString() + "','" + tfRePassword.getText() + "'," + settingInt
+					+ "," + reportInt + "," + cashInt + "," + stockInt + "," + customerInt + ")";
 
 			preparedStatement = (com.mysql.jdbc.PreparedStatement) con.prepareStatement(sqlacc);
 			preparedStatement.execute();
@@ -292,50 +277,49 @@ public class Account_Page extends JPanel {
 			JOptionPane.showMessageDialog(null, "" + ex.getMessage(), "Adding New Data", JOptionPane.ERROR_MESSAGE);
 		}
 	}
-	
-	private void convertBoolean()
-	{
-		if(cbxSetting.isSelected()==true)
-		{
+
+	private void convertBoolean() {
+		if (cbxSetting.isSelected() == true) {
 			settingInt = 1;
-		}else settingInt = 0;
-		
-		if(chckbxCustomer.isSelected()==true)
-		{
+		} else
+			settingInt = 0;
+
+		if (chckbxCustomer.isSelected() == true) {
 			customerInt = 1;
-		}else customerInt = 0;
-		
-		if(chckbxCashRegister.isSelected()==true)
-		{
+		} else
+			customerInt = 0;
+
+		if (chckbxCashRegister.isSelected() == true) {
 			cashInt = 1;
-		}else cashInt = 0;
-		
-		if(chckbxReport.isSelected()==true)
-		{
+		} else
+			cashInt = 0;
+
+		if (chckbxReport.isSelected() == true) {
 			reportInt = 1;
-		}else reportInt = 0;
-		
-		if(chckbxStock.isSelected()==true)
-		{
+		} else
+			reportInt = 0;
+
+		if (chckbxStock.isSelected() == true) {
 			stockInt = 1;
-		}else stockInt = 0;
+		} else
+			stockInt = 0;
 	}
 
 	@SuppressWarnings("deprecation")
 	private void updateDataToDatabase() {
 		com.mysql.jdbc.Connection con = null;
 		com.mysql.jdbc.PreparedStatement preparedStatement = null;
-		
+
 		convertBoolean();
-		
-		try
-		{
-			con = (com.mysql.jdbc.Connection) DriverManager.getConnection(DataMysqlConnection.getUrl(),DataMysqlConnection.getUser(),DataMysqlConnection.getPassword());
-			String sqlacc = "Update tblaccount SET Name = '" + tfName.getText() + "',Position = '"+cboPosition.getSelectedItem().toString()+"', Password = '"
-					+ tfRePassword.getText() + "', Setting_perm =" +settingInt+ ""
-					+ ", Report_perm = " + reportInt+ ", Cash_perm = "
-					+ cashInt+ ", Stock_perm = " + stockInt
-					+ ", Customer_perm = " + customerInt+ " where ID = " + AccId;
+
+		try {
+			con = (com.mysql.jdbc.Connection) DriverManager.getConnection(DataMysqlConnection.getUrl(),
+					DataMysqlConnection.getUser(), DataMysqlConnection.getPassword());
+			String sqlacc = "Update tblaccount SET Name = '" + tfName.getText() + "',Position = '"
+					+ cboPosition.getSelectedItem().toString() + "', Password = '" + tfRePassword.getText()
+					+ "', Setting_perm =" + settingInt + "" + ", Report_perm = " + reportInt + ", Cash_perm = "
+					+ cashInt + ", Stock_perm = " + stockInt + ", Customer_perm = " + customerInt + " where ID = "
+					+ AccId;
 
 			preparedStatement = (com.mysql.jdbc.PreparedStatement) con.prepareStatement(sqlacc);
 			preparedStatement.executeUpdate();
@@ -352,7 +336,7 @@ public class Account_Page extends JPanel {
 		AccSel = lstUser.getSelectedIndex();
 
 		if (AccSel > -1) {
-			
+
 			nameUnchange = lstUser.getSelectedValue().toString();
 
 			btnCreateNew.setEnabled(true);
@@ -363,10 +347,10 @@ public class Account_Page extends JPanel {
 			com.mysql.jdbc.Connection con = null;
 			com.mysql.jdbc.PreparedStatement preparedStatement = null;
 			ResultSet resultSet = null;
-			
-			try
-			{
-				con = (com.mysql.jdbc.Connection) DriverManager.getConnection(DataMysqlConnection.getUrl(),DataMysqlConnection.getUser(),DataMysqlConnection.getPassword());
+
+			try {
+				con = (com.mysql.jdbc.Connection) DriverManager.getConnection(DataMysqlConnection.getUrl(),
+						DataMysqlConnection.getUser(), DataMysqlConnection.getPassword());
 				String sqlacc = "Select *from tblaccount where Name ='" + lstUser.getSelectedValue().toString() + "'";
 
 				preparedStatement = (com.mysql.jdbc.PreparedStatement) con.prepareStatement(sqlacc);
@@ -390,17 +374,16 @@ public class Account_Page extends JPanel {
 						chckbxFullAccess.setSelected(true);
 					} else
 						chckbxFullAccess.setSelected(false);
-					if (Integer.parseInt(aid) == ReferenceMethod.idSpeacial) 
-					{
-						if (ReferenceMethod.idSpeacial == Integer.parseInt(Person_Accessable_Static.getAccID().toString())) {
+					if (Integer.parseInt(aid) == ReferenceMethod.idSpeacial) {
+						if (ReferenceMethod.idSpeacial == Integer
+								.parseInt(Person_Accessable_Static.getAccID().toString())) {
 							tfName.setEditable(true);
 							tfPassword.setEditable(true);
 							tfRePassword.setEditable(true);
 							btnRemove.setEnabled(false);
 							cboPosition.setEnabled(false);
 
-						}
-						else {
+						} else {
 
 							tfName.setEditable(false);
 							tfPassword.setEditable(false);
@@ -416,8 +399,7 @@ public class Account_Page extends JPanel {
 						chckbxCustomer.setEnabled(false);
 						chckbxStock.setEnabled(false);
 						chckbxCashRegister.setEnabled(false);
-					}
-					else {
+					} else {
 						chckbxFullAccess.setEnabled(true);
 						chckbxReport.setEnabled(true);
 						cbxSetting.setEnabled(true);
@@ -432,36 +414,32 @@ public class Account_Page extends JPanel {
 						btnRemove.setEnabled(true);
 						cboPosition.setEnabled(true);
 					}
-					
-					if(Integer.parseInt(Person_Accessable_Static.getAccID()) != ReferenceMethod.idSpeacial)
-					{
-						if(Integer.parseInt(aid)==ReferenceMethod.idSpeacial)
-						{
+
+					if (Integer.parseInt(Person_Accessable_Static.getAccID()) != ReferenceMethod.idSpeacial) {
+						if (Integer.parseInt(aid) == ReferenceMethod.idSpeacial) {
 							tfName.setEditable(false);
 							tfPassword.setEditable(false);
 							tfRePassword.setEditable(false);
 							chcboShowPassword.setEnabled(false);
 							cboPosition.setEditable(false);
-						}else {
-						
-						tfName.setEditable(true);
-						tfPassword.setEditable(true);
-						tfRePassword.setEditable(true);
-						chckbxFullAccess.setEnabled(false);
-						chckbxReport.setEnabled(false);
-						cbxSetting.setEnabled(false);
-						chckbxCustomer.setEnabled(false);
-						chckbxStock.setEnabled(false);
-						chckbxCashRegister.setEnabled(false);
-						chcboShowPassword.setEnabled(true);
-						
-						btnAdd.setEnabled(false);
-						btnCreateNew.setEnabled(false);
-						btnRemove.setEnabled(false);
-						cboPosition.setEnabled(false);
-						
-						
-					
+						} else {
+
+							tfName.setEditable(true);
+							tfPassword.setEditable(true);
+							tfRePassword.setEditable(true);
+							chckbxFullAccess.setEnabled(false);
+							chckbxReport.setEnabled(false);
+							cbxSetting.setEnabled(false);
+							chckbxCustomer.setEnabled(false);
+							chckbxStock.setEnabled(false);
+							chckbxCashRegister.setEnabled(false);
+							chcboShowPassword.setEnabled(true);
+
+							btnAdd.setEnabled(false);
+							btnCreateNew.setEnabled(false);
+							btnRemove.setEnabled(false);
+							cboPosition.setEnabled(false);
+
 						}
 					}
 				}
@@ -471,11 +449,9 @@ public class Account_Page extends JPanel {
 			}
 		}
 	}
-	
-	private void accountFeature()
-	{
-		if(Integer.parseInt(Person_Accessable_Static.getAccID())!=ReferenceMethod.idSpeacial)
-		{
+
+	private void accountFeature() {
+		if (Integer.parseInt(Person_Accessable_Static.getAccID()) != ReferenceMethod.idSpeacial) {
 			btnCreateNew.setEnabled(false);
 			btnUpdate.setEnabled(false);
 			btnRemove.setEnabled(false);
@@ -506,6 +482,7 @@ public class Account_Page extends JPanel {
 		lstUser = new JList<String>(listModel);
 		pnlWest.add(lstUser, BorderLayout.CENTER);
 		lstUser.addMouseListener(new MouseAdapter() {
+			@Override
 			public void mouseClicked(MouseEvent eve) {
 				lstUserRow_Selected(eve);
 			}
@@ -526,6 +503,7 @@ public class Account_Page extends JPanel {
 		btnCreateNew = new JButton("Create New");
 		btnCreateNew.setRequestFocusEnabled(false);
 		btnCreateNew.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent eve) {
 				btnCreateNew_Clicked(eve);
 			}
@@ -570,13 +548,13 @@ public class Account_Page extends JPanel {
 		tfName = new JTextField("");
 		pnlInfo.add(tfName);
 		tfName.setColumns(10);
-		
+
 		lblAccountType = new JLabel("Account Type");
 		lblAccountType.setHorizontalAlignment(SwingConstants.CENTER);
 		lblAccountType.setForeground(new Color(245, 245, 220));
 		lblAccountType.setFont(new Font("Arial", Font.PLAIN, 15));
 		pnlInfo.add(lblAccountType);
-		
+
 		cboPosition = new JComboBox<String>();
 		storeDataToCbo();
 		pnlInfo.add(cboPosition);
@@ -603,6 +581,7 @@ public class Account_Page extends JPanel {
 
 		chcboShowPassword = new JCheckBox("Show Password");
 		chcboShowPassword.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent eve) {
 
 				if (chcboShowPassword.isSelected()) {
@@ -658,6 +637,7 @@ public class Account_Page extends JPanel {
 
 		chckbxFullAccess = new JCheckBox("Full Access");
 		chckbxFullAccess.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent eve) {
 
 				if (chckbxFullAccess.isSelected() == true) {
@@ -688,6 +668,7 @@ public class Account_Page extends JPanel {
 		btnAdd = new JButton("Add");
 		btnAdd.setRequestFocusEnabled(false);
 		btnAdd.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent eve) {
 				btnAdd_Clicked(eve);
 			}
@@ -699,6 +680,7 @@ public class Account_Page extends JPanel {
 
 		btnUpdate = new JButton("Update");
 		btnUpdate.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent eve) {
 
 				btnUpdate_Clicked(eve);
@@ -712,6 +694,7 @@ public class Account_Page extends JPanel {
 
 		btnRemove = new JButton("Remove");
 		btnRemove.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent eve) {
 				btnRemove_Clicked(eve);
 			}
@@ -723,12 +706,13 @@ public class Account_Page extends JPanel {
 		pnlBtns.add(btnRemove);
 		btnRemove.setEnabled(false);
 		btnUpdate.setEnabled(false);
-		
+
 		panel_1 = new JPanel();
 		panel_1.setBackground(new Color(47, 79, 79));
 		add(panel_1, BorderLayout.WEST);
 
 		chckbxCashRegister.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent eve) {
 				if (chckbxCashRegister.isSelected() == false) {
 					chckbxFullAccess.setSelected(false);
@@ -745,6 +729,7 @@ public class Account_Page extends JPanel {
 		});
 
 		chckbxCustomer.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent eve) {
 				if (chckbxCustomer.isSelected() == false) {
 					chckbxFullAccess.setSelected(false);
@@ -761,6 +746,7 @@ public class Account_Page extends JPanel {
 		});
 
 		cbxSetting.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent eve) {
 				if (cbxSetting.isSelected() == false) {
 					chckbxFullAccess.setSelected(false);
@@ -777,6 +763,7 @@ public class Account_Page extends JPanel {
 		});
 
 		chckbxStock.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent eve) {
 				if (chckbxStock.isSelected() == false) {
 					chckbxFullAccess.setSelected(false);
@@ -793,6 +780,7 @@ public class Account_Page extends JPanel {
 		});
 
 		chckbxReport.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent eve) {
 				if (chckbxReport.isSelected() == false) {
 					chckbxFullAccess.setSelected(false);
@@ -807,10 +795,10 @@ public class Account_Page extends JPanel {
 				}
 			}
 		});
-		
+
 		addKeyEventToTextField(tfName);
 		addKeyEventToTextPassword(tfPassword);
-		
+
 		btnAdd.setEnabled(false);
 	}
 

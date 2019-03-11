@@ -1,8 +1,8 @@
 package resource;
 
 public class GeaneralSetting_Accessable {
-	
-	private static String companyName,dateTime,reciept;
+
+	private static String companyName, dateTime, reciept;
 
 	public static String getCompanyName() {
 		return companyName;
@@ -27,7 +27,5 @@ public class GeaneralSetting_Accessable {
 	public static void setReciept(String reciept) {
 		GeaneralSetting_Accessable.reciept = reciept;
 	}
-	
-	
 
 }

@@ -3,11 +3,11 @@ package resource;
 import java.util.ArrayList;
 
 public class UserPerforment {
-	
-	private String userID,userName,loginDate,loginTime,logoutTime,LogoutDate,Saled;
-	
-	private static String userIDS,userNameS,loginDateS,loginTimeS,logoutTimeS,LogoutDateS,SaledS;
-	
+
+	private String userID, userName, loginDate, loginTime, logoutTime, LogoutDate, Saled;
+
+	private static String userIDS, userNameS, loginDateS, loginTimeS, logoutTimeS, LogoutDateS, SaledS;
+
 	public String getUserID() {
 		return userID;
 	}
@@ -25,8 +25,6 @@ public class UserPerforment {
 	}
 
 	public static ArrayList<UserPerforment> userPerformentsArr = new ArrayList<UserPerforment>();
-	
-	
 
 	public static String getUserNameS() {
 		return userNameS;
@@ -123,7 +121,5 @@ public class UserPerforment {
 	public void setSaled(String saled) {
 		Saled = saled;
 	}
-	
-	
 
 }

@@ -1,8 +1,26 @@
 package resource;
 
 public class DataMysqlConnection {
+
+	private static String url, user, password, dataBase,host,port;
+
 	
-	private static String url,user,password,dataBase;
+	
+	public static String getHost() {
+		return host;
+	}
+
+	public static void setHost(String host) {
+		DataMysqlConnection.host = host;
+	}
+
+	public static String getPort() {
+		return port;
+	}
+
+	public static void setPort(String port) {
+		DataMysqlConnection.port = port;
+	}
 
 	public static String getUrl() {
 		return url;
@@ -35,7 +53,5 @@ public class DataMysqlConnection {
 	public static void setDataBase(String dataBase) {
 		DataMysqlConnection.dataBase = dataBase;
 	}
-	
-	
 
 }
