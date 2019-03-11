@@ -3,6 +3,10 @@ package g5a_app;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.temporal.JulianFields;
+import java.util.Date;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -11,6 +15,9 @@ import javax.swing.JScrollPane;
 import javax.swing.SwingConstants;
 
 import com.toedter.calendar.JDateChooser;
+import com.toedter.calendar.JDayChooser;
+
+import resource.ReferenceMethod;
 
 public class XReadingDaily_Page extends JPanel {
 
@@ -56,6 +63,7 @@ public class XReadingDaily_Page extends JPanel {
 		panel_6.add(lblNewLabel_1);
 
 		JDateChooser dateChooser_1 = new JDateChooser();
+		dateChooser_1.setDateFormatString("yyyy-MM-dd");
 		panel_6.add(dateChooser_1);
 
 		JPanel panel_5 = new JPanel();
@@ -67,6 +75,7 @@ public class XReadingDaily_Page extends JPanel {
 		panel_5.add(lblNewLabel);
 
 		JDateChooser dateChooser = new JDateChooser();
+		dateChooser.setDateFormatString("yyyy-MM-dd");
 		panel_5.add(dateChooser);
 
 		JPanel panel_7 = new JPanel();
@@ -86,6 +95,31 @@ public class XReadingDaily_Page extends JPanel {
 		lblXreadDaily.setFont(new Font("Tahoma", Font.BOLD, 15));
 		lblXreadDaily.setHorizontalAlignment(SwingConstants.CENTER);
 		panel.add(lblXreadDaily, BorderLayout.NORTH);
+		
+		
+		
+		
+		String Sday = String.valueOf(Integer.parseInt(ReferenceMethod.getDateShow().substring(8,10)) - 1);
+		String Smonth = String.valueOf(Integer.parseInt(ReferenceMethod.getDateShow().substring(5,7)));
+		String Syear = String.valueOf(Integer.parseInt(ReferenceMethod.getDateShow().substring(0,4)));
+		
+		if(Sday.length()==1)
+		{
+			Sday = "0"+Sday;
+		}
+		
+		if(Smonth.length()==1)
+		{
+			Smonth = "0"+Smonth;
+		}
+
+		System.out.println(Sday+"-"+Smonth+"-"+Syear);
+		
+		String sDate = Sday+"-"+Smonth+"-"+Syear;
+		//Date dateFormat = new SimpleDateFormat("yyyy-MM-dd").parse(sDate);
+		
+		//dateChooser.setDate(dateFormat);
+		dateChooser_1.setDate(new Date());
 
 	}
 

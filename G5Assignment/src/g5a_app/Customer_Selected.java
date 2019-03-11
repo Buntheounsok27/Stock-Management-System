@@ -95,7 +95,7 @@ public class Customer_Selected extends JFrame {
 			try {
 				con = (com.mysql.jdbc.Connection) DriverManager.getConnection(DataMysqlConnection.getUrl(),
 						DataMysqlConnection.getUser(), DataMysqlConnection.getPassword());
-				String sqlacc = "Select CusID from tblcustomer where Phone = '"+defaultTableModel.getValueAt(sel, 1).toString()+"'";
+				String sqlacc = "Select CusID from tblcustomers where Phone = '"+defaultTableModel.getValueAt(sel, 1).toString()+"'";
 
 				preparedStatement = (com.mysql.jdbc.PreparedStatement) con.prepareStatement(sqlacc);
 				resultSet = preparedStatement.executeQuery();

@@ -56,6 +56,7 @@ public class CategoryDaily_Page extends JPanel {
 		panel_6.add(lblNewLabel_1);
 
 		JDateChooser dateChooser_1 = new JDateChooser();
+		dateChooser_1.setDateFormatString("yyyy-MM-dd");
 		panel_6.add(dateChooser_1);
 
 		JPanel panel_5 = new JPanel();
@@ -67,6 +68,7 @@ public class CategoryDaily_Page extends JPanel {
 		panel_5.add(lblNewLabel);
 
 		JDateChooser dateChooser = new JDateChooser();
+		dateChooser.setDateFormatString("yyyy-MM-dd");
 		panel_5.add(dateChooser);
 
 		JPanel panel_7 = new JPanel();
